@@ -98,8 +98,8 @@ def mail_fetch(email, imap_host, email_login, email_pass):
                     continue
                 
                 for msg_part in msg.walk():
-                    if msg.get_content_type() == 'text/plain':
-                        payload = msg.get_payload(decode=True)
+                    if msg_part.get_content_type() == 'text/plain':
+                        payload = msg_part.get_payload(decode=True)
                         
                         assert isinstance(payload, bytes)
                         
